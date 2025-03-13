@@ -1,3 +1,0 @@
-title: My Website Title
-description: A short description of my website
-source: skimmer2
