@@ -10,16 +10,18 @@
             margin: 0;
             padding: 0;
             display: flex;
+            background-color: #000; /* Black background */
+            color: #ff0033; /* Red text */
         }
         .sidebar {
             width: 250px;
-            background-color: #2c3e50;
-            color: white;
+            background-color: #ff0033; /* Red color */
+            color: black;
             padding: 20px;
             height: 100vh;
         }
         .sidebar a, .dropdown-btn {
-            color: white;
+            color: black;
             text-decoration: none;
             display: block;
             margin: 10px 0;
@@ -35,11 +37,11 @@
         .content {
             flex: 1;
             padding: 20px;
-            background-color: #ecf0f1;
+            background-color: #000; /* Black background */
         }
         .header {
-            background-color: #3498db;
-            color: white;
+            background-color: #ff0033; /* Red color */
+            color: black;
             padding: 10px;
             display: flex;
             justify-content: space-between;
@@ -61,7 +63,7 @@
     <div class="sidebar">
         <h2>skimmer2</h2>
         <a href="#">Home</a>
-        <a href="#">Privacy</a>
+        <a href="/Privacy">Privacy</a>
         <div class="dropdown-btn" onclick="toggleDropdown('learnDropdown')">Learn</div>
         <div class="dropdown" id="learnDropdown">
             <a href="https://docs.microsoft.com/aspnet/core">ASP.NET Core</a>
@@ -72,7 +74,7 @@
             <div>Welcome</div>
             <div>
                 <a href="#">Home</a>
-                <a href="#">Privacy</a>
+                <a href="/Privacy">Privacy</a>
             </div>
         </div>
         <div class="text-center">
