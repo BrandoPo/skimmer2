@@ -1,45 +1,8 @@
-﻿<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #000; /* Black background */
-            color: #ff0033; /* Red text */
-        }
-        .header {
-            background-color: #ff0033; /* Red color */
-            color: black;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .content {
-            padding: 20px;
-        }
-        a {
-            color: #ff0033; /* Red color */
-            text-decoration: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <div>skimmer2</div>
-        <div>
-            <a href="#">Home</a>
-            <a href="/Privacy">Privacy</a>
-        </div>
-    </div>
-    <div class="content">
-        <h1>Privacy Policy</h1>
-        <p>Use this page to detail your site's privacy policy.</p>
-    </div>
-</body>
-</html>
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Use this page to detail your site's privacy policy.</p>
