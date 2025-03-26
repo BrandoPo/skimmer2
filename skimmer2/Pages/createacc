@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home page - skimmer2</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/site.css?v=ZJg29BfKMfPQ1nmIkdqg6iWhTGRNJx2HnD4FfdtVCcU">
+    <link rel="stylesheet" href="/skimmer2.styles.css?v=KO39YmSBQ_UxRgPp4bkpqXthS2O9JdhVJpVVBSusJeo">
+    <style>
+        body {
+            background-color: #000;
+            color: #ff0000;
+            font-family: Arial, sans-serif;
+        }
+        .navbar, .footer {
+            background-color: #1a1a1a;
+            border-color: #ff0000;
+        }
+        .nav-link {
+            color: #ff0000 !important;
+        }
+        .nav-link:hover {
+            color: #cc0000 !important;
+        }
+        .btn-custom {
+            background-color: #ff0000;
+            color: #000;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .btn-custom:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav b-tzwebegwvj="" class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div b-tzwebegwvj="" class="container">
+                <a class="navbar-brand" href="/">skimmer2</a>
+                <button b-tzwebegwvj="" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span b-tzwebegwvj="" class="navbar-toggler-icon"></span>
+                </button>
+                <div b-tzwebegwvj="" class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul b-tzwebegwvj="" class="navbar-nav flex-grow-1">
+                        <li b-tzwebegwvj="" class="nav-item">
+                            <a class="nav-link text-dark" href="/">Home</a>
+                        </li>
+                        <li b-tzwebegwvj="" class="nav-item">
+                            <a class="nav-link text-dark" href="/Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div b-tzwebegwvj="" class="container">
+        <main b-tzwebegwvj="" role="main" class="pb-3">
+            <div class="text-center">
+                <h1 class="display-4">2 minute test working, no console problems, 2nd push, with the console saying shutdown, and bitvise closed. finish test</h1>
+                <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+                <a href="createacc" class="btn-custom">Create an Account</a>
+                <a href="signin" class="btn-custom">Already have an account? Sign In.</a>
+            </div>
+        </main>
+    </div>
+
+    <footer b-tzwebegwvj="" class="border-top footer text-muted">
+        <div b-tzwebegwvj="" class="container">
+            © 2025 - skimmer2 - <a href="/Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js?v=BxFAw9RUJ1E4NycpKEjCNDeoSvr4RPHixdBq5wDnkeY"></script>
+
+    <div id="hl-aria-live-message-container" aria-live="polite" class="visually-hidden"></div>
+    <div id="hl-aria-live-alert-container" role="alert" aria-live="assertive" class="visually-hidden"></div>
+</body>
+</html>
