@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using skimmer2.Models;
+using skimmer2.Data;
 using System.Diagnostics;
 
 namespace skimmer2.Controllers
@@ -7,20 +8,27 @@ namespace skimmer2.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly CETSNContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, CETSNContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(); // Pass the users list to the view
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+        public IActionResult AccountInformation()
+        {
+            var users = _context.Users.ToList();
+            return View(users);
         }
 
         public IActionResult CreateAcc()
