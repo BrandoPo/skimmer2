@@ -7,10 +7,24 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/skimmer2.styles.css" asp-append-version="true" />
+    <style>
+        .navbar {
+            background-color: red; /* Red header */
+        }
+
+        .navbar a:hover {
+            background-color: lightblue; /* Light blue on hover */
+        }
+
+        .footer {
+            background-color: black; /* Black footer */
+            color: white; /* White text for contrast */
+        }
+    </style>
 </head>
 <body>
-    <header style="color:Red;">
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index">skimmer2</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -36,7 +50,7 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted" style="color:Black;">
+    <footer class="border-top footer text-muted">
         <div class="container">
             &copy; 2025 - skimmer2 - <a asp-area="" asp-page="/Privacy">Privacy</a>
         </div>
