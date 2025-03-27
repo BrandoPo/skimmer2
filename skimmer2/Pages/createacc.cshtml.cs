@@ -2,47 +2,28 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Logging;
 using MySql.Data.MySqlClient;
 
 namespace skimmer2.Pages
 {
     public class RegisterModel : PageModel
     {
-        [BindProperty]
-        [Required(ErrorMessage = "Username is required.")]
-        public string Username { get; set; }
+        private readonly ILogger<RegisterModel> _logger;
 
         [BindProperty]
-        [Required(ErrorMessage = "Email is required.")]
-        [EmailAddress(ErrorMessage = "Invalid email address.")]
-        public string Email { get; set; }
-
-        [BindProperty]
-        [Required(ErrorMessage = "Password is required.")]
-        public string Password { get; set; }
-
-        [BindProperty]
-        [Required(ErrorMessage = "First Name is required.")]
-        public string FirstName { get; set; }
-
-        [BindProperty]
-        [Required(ErrorMessage = "Last Name is required.")]
-        public string LastName { get; set; }
-
-        [BindProperty]
-        [Required(ErrorMessage = "Address is required.")]
-        public string Address { get; set; }
-
-        [BindProperty]
-        [Required(ErrorMessage = "Role is required.")]
-        public string Role { get; set; }
+        public UserRegistration User { get; set; }
 
         public string ErrorMessage { get; set; }
         public string SuccessMessage { get; set; }
 
+        public RegisterModel(ILogger<RegisterModel> logger)
+        {
+            _logger = logger;
+        }
+
         public void OnGet()
         {
-            // Optionally initialize any page state.
         }
 
         public IActionResult OnPost()
@@ -52,10 +33,9 @@ namespace skimmer2.Pages
                 return Page();
             }
 
-            // Connection string to the MySQL database
-            // Replace your_db_username and your_db_password with actual credentials.
-            string connectionString = "server=18.119.104.251;port=3306;database=CETSN;uid=root;pwd=llatsni;";
-
+            // Update the connection string with your actual database username and password.
+            string connectionString = "server=18.119.104.251;port=3306;database=CETSN;uid=your_db_username;pwd=your_db_password;";
+            
             try
             {
                 using (var connection = new MySqlConnection(connectionString))
@@ -63,24 +43,24 @@ namespace skimmer2.Pages
                     connection.Open();
                     string sql = @"INSERT INTO account 
                                    (username, email, password, first_name, last_name, address, role) 
-                                   VALUES (@username, @email, @password, @first_name, @last_name, @address, @role)";
-
+                                   VALUES (@username, @email, @password, @firstName, @lastName, @address, @role)";
+                    
                     using (var command = new MySqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@username", Username);
-                        command.Parameters.AddWithValue("@email", Email);
-                        command.Parameters.AddWithValue("@password", Password);
-                        command.Parameters.AddWithValue("@first_name", FirstName);
-                        command.Parameters.AddWithValue("@last_name", LastName);
-                        command.Parameters.AddWithValue("@address", Address);
-                        command.Parameters.AddWithValue("@role", Role);
+                        command.Parameters.AddWithValue("@username", User.Username);
+                        command.Parameters.AddWithValue("@email", User.Email);
+                        command.Parameters.AddWithValue("@password", User.Password);
+                        command.Parameters.AddWithValue("@firstName", User.FirstName);
+                        command.Parameters.AddWithValue("@lastName", User.LastName);
+                        command.Parameters.AddWithValue("@address", User.Address);
+                        command.Parameters.AddWithValue("@role", User.Role);
 
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
-                            // Optionally, you can set a success message or redirect to a Sign In page.
+                            _logger.LogInformation("User registered: {Username}", User.Username);
+                            // Optionally set a success message or redirect.
                             SuccessMessage = "Registration successful. You may now sign in.";
-                            // Redirect to Sign In page after successful registration:
                             return RedirectToPage("/SignIn");
                         }
                         else
@@ -92,11 +72,35 @@ namespace skimmer2.Pages
             }
             catch (Exception ex)
             {
-                // Log the exception as needed.
+                _logger.LogError(ex, "Error registering user");
                 ErrorMessage = "An error occurred: " + ex.Message;
             }
 
             return Page();
         }
+    }
+
+    public class UserRegistration
+    {
+        [Required]
+        public string Username { get; set; }
+        
+        [Required, EmailAddress]
+        public string Email { get; set; }
+        
+        [Required]
+        public string Password { get; set; }
+        
+        [Required]
+        public string FirstName { get; set; }
+        
+        [Required]
+        public string LastName { get; set; }
+        
+        [Required]
+        public string Address { get; set; }
+        
+        [Required]
+        public string Role { get; set; }
     }
 }

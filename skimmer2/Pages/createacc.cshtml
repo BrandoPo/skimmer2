@@ -1,5 +1,5 @@
 @page
-@model RegisterModel
+@model skimmer2.Pages.RegisterModel
 @{
     ViewData["Title"] = "Account Registration";
 }
@@ -62,13 +62,13 @@
         padding: 10px;
         border-radius: 4px;
     }
-    .alert-success {
-        background-color: #ccffcc;
-        color: #006600;
-    }
     .alert-danger {
         background-color: #ffcccc;
         color: #990000;
+    }
+    .alert-success {
+        background-color: #ccffcc;
+        color: #006600;
     }
 </style>
 
@@ -83,26 +83,26 @@
 }
 
 <form method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="Username" required />
+    <label asp-for="User.Username">Username:</label>
+    <input asp-for="User.Username" required />
 
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="Email" required />
+    <label asp-for="User.Email">Email:</label>
+    <input asp-for="User.Email" required />
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="Password" required />
+    <label asp-for="User.Password">Password:</label>
+    <input asp-for="User.Password" type="password" required />
 
-    <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="FirstName" required />
+    <label asp-for="User.FirstName">First Name:</label>
+    <input asp-for="User.FirstName" required />
 
-    <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="LastName" required />
+    <label asp-for="User.LastName">Last Name:</label>
+    <input asp-for="User.LastName" required />
 
-    <label for="address">Address:</label>
-    <input type="text" id="address" name="Address" required />
+    <label asp-for="User.Address">Address:</label>
+    <input asp-for="User.Address" required />
 
-    <label for="role">Role:</label>
-    <select id="role" name="Role" required>
+    <label asp-for="User.Role">Role:</label>
+    <select asp-for="User.Role" required>
         <option value="user">User</option>
         <option value="admin">Admin</option>
     </select>
