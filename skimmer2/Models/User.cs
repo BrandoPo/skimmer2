@@ -2,9 +2,9 @@
 {
     public class User
     {
-        public int Id { get; set; } // Primary key
-        public string Username { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; } // Consider hashing in a real app
+        public int Id { get; set; }
+        public string? Username { get; set; } // Nullable string
+        public string? Email { get; set; }    // Nullable string
+        public string? Password { get; set; } // Nullable string
     }
 }
