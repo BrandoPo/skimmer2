@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\Brandon Phoumyyoth\source\repos\skimmer4\skimmer2
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/Brandon Phoumyyoth/source/repos/skimmer4/skimmer2/Pages/createacc.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcY3JlYXRlYWNjLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Brandon Phoumyyoth/source/repos/skimmer4/skimmer2/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
