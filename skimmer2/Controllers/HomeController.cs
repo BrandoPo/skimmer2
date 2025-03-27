@@ -18,13 +18,17 @@ namespace skimmer2.Controllers
 
         public IActionResult Index()
         {
-            var users = _context.Users.ToList();
-            return View(users); // Pass the users list to the view
+            return View(); // Pass the users list to the view
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+        public IActionResult AccountInformation()
+        {
+            var users = _context.Users.ToList();
+            return View(users);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
