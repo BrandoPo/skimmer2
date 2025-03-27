@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title style="">@ViewData["Title"] - skimmer2</title>
+    <title>@ViewData["Title"] - skimmer2</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/skimmer2.styles.css" asp-append-version="true" />
@@ -16,42 +16,48 @@
         body {
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
             background-color: #000;
             color: #ff0000;
             font-family: Arial, sans-serif;
         }
 
         main {
-        flex: 1;
+            flex: 1;
         }
 
         .navbar {
-            background-color: red; /* Red header */
+            background-color: red;
         }
 
         .navbar a:hover {
-            background-color: #7FDBFF; /* Light blue on hover */
+            background-color: #7FDBFF;
         }
 
         .navbar-brand {
-            color: red; /* Red title text */
+            color: red;
         }
 
         .footer {
-            background-color: black; /* Black footer */
-            color: white; /* White text for contrast */
+            background-color: black;
+            color: white;
             text-align: center;
+            padding: 10px 0;
         }
+
         .navbar, .footer {
             background-color: #1a1a1a;
             border-color: #ff0000;
         }
+
         .nav-link {
             color: #ff0000 !important;
         }
+
         .nav-link:hover {
             color: #cc0000 !important;
         }
+
         .btn-custom {
             background-color: #ff0000;
             color: #000;
@@ -61,6 +67,7 @@
             cursor: pointer;
             margin: 10px;
         }
+
         .btn-custom:hover {
             background-color: #cc0000;
         }
