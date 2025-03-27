@@ -9,9 +9,8 @@ namespace skimmer2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly CETSNContext _context;
-        private CETSNContext? context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, CETSNContext context)
         {
             _logger = logger;
             _context = context;
@@ -20,7 +19,7 @@ namespace skimmer2.Controllers
         public IActionResult Index()
         {
             var users = _context.Users.ToList();
-            return View();
+            return View(users); // Pass the users list to the view
         }
 
         public IActionResult Privacy()
