@@ -8,12 +8,30 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/skimmer2.styles.css" asp-append-version="true" />
     <style>
+
+        html, body {
+        height: 100%;
+        margin: 0;
+    }
+
+    body {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main {
+        flex: 1;
+    }
         .navbar {
             background-color: red; /* Red header */
         }
 
         .navbar a:hover {
-            background-color: lightblue; /* Light blue on hover */
+            background-color: #7FDBFF; /* Light blue on hover */
+        }
+
+        .navbar-brand {
+        color: #7FDBFF; /* Light blue title text */
         }
 
         .footer {
