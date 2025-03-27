@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "skimmer2", "skimmer2\skimmer2.csproj", "{CE25F5E2-5176-4E60-9846-63E609413627}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "skimmer2", "skimmer2\skimmer2.csproj", "{EED0C472-C506-473A-BB3C-31387E572F23}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{CE25F5E2-5176-4E60-9846-63E609413627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CE25F5E2-5176-4E60-9846-63E609413627}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CE25F5E2-5176-4E60-9846-63E609413627}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CE25F5E2-5176-4E60-9846-63E609413627}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EED0C472-C506-473A-BB3C-31387E572F23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EED0C472-C506-473A-BB3C-31387E572F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EED0C472-C506-473A-BB3C-31387E572F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EED0C472-C506-473A-BB3C-31387E572F23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1E5C95EF-EA1D-4D44-BE97-BBC07AC4943D}
+		SolutionGuid = {9717160D-A6FA-48FE-B7FF-73C13BA1EB3D}
 	EndGlobalSection
 EndGlobal
