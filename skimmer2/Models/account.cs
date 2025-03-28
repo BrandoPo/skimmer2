@@ -1,6 +1,6 @@
 namespace skimmer2.Models
 {
-public class Account
+public class account
 {
     public int Id { get; set; }
     public string Username { get; set; }

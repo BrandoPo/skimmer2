@@ -24,7 +24,6 @@ namespace skimmer2.Data
             });
         }
 
-        public DbSet<Account> Accounts { get; set; }
 
     }
 }

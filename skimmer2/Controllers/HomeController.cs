@@ -48,7 +48,7 @@ namespace skimmer2.Controllers
         }
 
     [HttpPost]
-    public async Task<IActionResult> CreateAcc(Account account)
+    public async Task<IActionResult> CreateAcc(account account)
     {
         if (ModelState.IsValid)
         {
