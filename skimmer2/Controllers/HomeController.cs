@@ -50,5 +50,41 @@ namespace skimmer2.Controllers
 
 
 
+        //the following is for the accountcreation page
+    private readonly ApplicationDbContext _acccontext;
+
+    public HomeController(ApplicationDbContext context)
+    {
+        _acccontext = context;
+    }
+
+    [HttpGet]
+    public IActionResult SubmitForm()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> SubmitForm([Bind("Username,Email,Password,FirstName,LastName,Address,Role")] User user)
+    {
+        if (ModelState.IsValid)
+        {
+            // Hash the password before saving
+            user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+
+            _acccontext.Add(user);
+            await _acccontext.SaveChangesAsync();
+            return RedirectToAction(nameof(Success));
+        }
+        return View(user);
+    }
+
+    public IActionResult Success()
+    {
+        return View();
+    }
+
+
+
     }
 }
