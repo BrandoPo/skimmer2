@@ -47,7 +47,17 @@ namespace skimmer2.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-
+    [HttpPost]
+    public async Task<IActionResult> CreateAcc(Account account)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+        return View(account);
+    }
 
 
 
