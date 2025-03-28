@@ -47,24 +47,23 @@ namespace skimmer2.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-          [HttpPost]
-        public async Task<IActionResult> CreateAcc([Bind("username,email,password,first_name,last_name,address,Role")] account model)
-        {
-            if (ModelState.IsValid)
-            {
-                // Hash the password before saving
-                model.password = BCrypt.Net.BCrypt.HashPassword(model.password);
-                _context.Add(model);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Success)); // You need to create this action or redirect to another page
-            }
-            return View(model);
-        }
+       /* public IActionResult CreateAcc([Bind("username,email,password,first_name,last_name,address,Role")] account model)
+{
+    if (ModelState.IsValid)
+    {
+        // Hash the password before saving
+        model.password = BCrypt.Net.BCrypt.HashPassword(model.password);
+        _context.Add(model);
+        _context.SaveChanges();
+        return RedirectToAction(nameof(Success)); // You need to create this action or redirect to another page
+    }
+    return View(model);
+}
 
-        public IActionResult Success()
-        {
-            return View(); // Create a Success view or redirect to another appropriate page
-        }
+public IActionResult Success()
+{
+    return View(); // Create a Success view or redirect to another appropriate page
+}*/
 
 
     }
