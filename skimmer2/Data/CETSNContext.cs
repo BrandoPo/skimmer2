@@ -23,5 +23,13 @@ namespace skimmer2.Data
                 entity.Property(e => e.Password).HasColumnName("Password");
             });
         }
+
+            public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Account> Accounts { get; set; }
+
     }
 }
