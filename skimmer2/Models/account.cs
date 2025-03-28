@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-public class AccountC
+public class account
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
