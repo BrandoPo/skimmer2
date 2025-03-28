@@ -10,12 +10,17 @@
     <title>Create Account</title>
     <style>
         body {
+            /*background-color: #000;
+            color: #ff0000;*/
             font-family: Arial, sans-serif;
         }
         form {
             max-width: 400px;
             margin: 50px auto;
             padding: 20px;
+          /*  background-color: #1a1a1a;
+            border-radius: 8px;
+            box-shadow: 0 0 10px #ff0000;*/
         }
         label {
             display: block;
@@ -28,64 +33,65 @@
             width: 100%;
             padding: 8px;
             margin-bottom: 16px;
+           /* border: 1px solid #ff0000;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;*/
         }
         button {
+           /* background-color: #ff0000;
+            color: #000;*/
             padding: 10px 15px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             margin-bottom: 10px;
         }
+        button:hover {
+            /*background-color: #cc0000;*/
+        }
         .link-button {
             display: block;
             text-align: center;
             margin-top: 20px;
+           /* color: #ff0000;*/
             text-decoration: none;
+        }
+        .link-button:hover {
+            /*color: #cc0000; */
         }
     </style>
 </head>
 <body>
-    <form asp-action="SubmitForm" asp-controller="Home" method="post">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        
-        <label for="Username">Username:</label>
-        <input type="text" asp-for="Username" id="Username" name="Username" required />
-        <span asp-validation-for="Username" class="text-danger"></span>
+    <form method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required />
 
-        <label for="Email">Email:</label>
-        <input type="email" asp-for="Email" id="Email" name="Email" required />
-        <span asp-validation-for="Email" class="text-danger"></span>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required />
 
-        <label for="Password">Password:</label>
-        <input type="password" asp-for="Password" id="Password" name="Password" required />
-        <span asp-validation-for="Password" class="text-danger"></span>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required />
 
-        <label for="FirstName">First Name:</label>
-        <input type="text" asp-for="FirstName" id="FirstName" name="FirstName" required />
-        <span asp-validation-for="FirstName" class="text-danger"></span>
+        <label for="first_name">First Name:</label>
+        <input type="text" id="first_name" name="first_name" required />
 
-        <label for="LastName">Last Name:</label>
-        <input type="text" asp-for="LastName" id="LastName" name="LastName" required />
-        <span asp-validation-for="LastName" class="text-danger"></span>
+        <label for="last_name">Last Name:</label>
+        <input type="text" id="last_name" name="last_name" required />
 
-        <label for="Address">Address:</label>
-        <input type="text" asp-for="Address" id="Address" name="Address" required />
-        <span asp-validation-for="Address" class="text-danger"></span>
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" required />
 
-        <label for="Role">Role:</label>
-        <select asp-for="Role" id="Role" name="Role" asp-items="Html.GetEnumSelectList<UserRole>()" required>
-            <option value="">Select Role</option>
+        <label for="role">Role:</label>
+        <select id="role" name="role" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
         </select>
-        <span asp-validation-for="Role" class="text-danger"></span>
 
         <button type="submit">Submit</button>
         <a href="/signin" class="link-button">Already have an account? Sign In.</a>
     </form>
 
     <a href="/createacc" class="link-button">Create an Account</a>
-
-    @section Scripts {
-        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    }
 </body>
 </html>
