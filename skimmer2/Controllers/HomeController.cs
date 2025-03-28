@@ -52,7 +52,7 @@ namespace skimmer2.Controllers
     {
         if (ModelState.IsValid)
         {
-            _context.Accounts.Add(account);
+            _context.account.Add(account);
             await _context.SaveChangesAsync();
             return RedirectToAction("Index");
         }
