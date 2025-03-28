@@ -1,4 +1,4 @@
-/*using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using skimmer2.Models;
 
 namespace skimmer2.Data
@@ -28,4 +28,4 @@ namespace skimmer2.Data
             });
         }
     }
-}*/
+}
