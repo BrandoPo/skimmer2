@@ -48,7 +48,7 @@ namespace skimmer2.Controllers
         }
 
 
-        /*    private readonly ApplicationDbContext _context;
+            private readonly ApplicationDbContext _context;
 
     public AccountController(ApplicationDbContext context)
     {
@@ -71,7 +71,7 @@ namespace skimmer2.Controllers
             return RedirectToAction("Index", "Home");
         }
         return View(account);
-    }*/
+    }
 
 
 
