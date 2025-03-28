@@ -1,4 +1,4 @@
-@model List<skimmer2.Models.Account>
+@model skimmer2.Models.Account
 
 @{
     ViewData["Title"] = "Account Registration";
@@ -47,7 +47,7 @@
     </style>
 </head>
 <body>
-    <form asp-action="Create" method="post">
+    <form asp-action="CreateAcc" method="post">
         <label for="username">Username:</label>
         <input type="text" id="username" name="Username" required />
 
