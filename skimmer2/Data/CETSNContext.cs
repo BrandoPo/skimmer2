@@ -23,5 +23,7 @@ namespace skimmer2.Data
                 entity.Property(e => e.Password).HasColumnName("Password");
             });
         }
+
+     
     }
 }
