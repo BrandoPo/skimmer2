@@ -24,12 +24,12 @@ namespace skimmer2.Data
             });
         }
 
-            public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options)
+          /*  public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
         {
         }
 
-        public DbSet<Account> Accounts { get; set; }
+    public DbSet<Account> Accounts { get; set; }*/
 
     }
 }

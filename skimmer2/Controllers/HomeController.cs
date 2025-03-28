@@ -36,10 +36,44 @@ namespace skimmer2.Controllers
             return View();
         }
 
+        public IActionResult Signin()
+        {
+            return View();
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+        /*    private readonly ApplicationDbContext _context;
+
+    public AccountController(ApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    [HttpGet]
+    public IActionResult Create()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Create(Account account)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index", "Home");
+        }
+        return View(account);
+    }*/
+
+
+
     }
 }

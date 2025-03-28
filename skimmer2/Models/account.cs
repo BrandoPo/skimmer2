@@ -1,4 +1,4 @@
-namespace skimmer2.Models
+/*namespace skimmer2.Models
 {
 public class Account
 {
@@ -11,4 +11,4 @@ public class Account
     public string Address { get; set; }
     public string Role { get; set; }
 }
-}
+}*/
