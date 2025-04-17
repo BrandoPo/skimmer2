@@ -36,27 +36,7 @@ namespace skimmer2.Controllers
             return View();
         }
 
-                [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAcc([Bind("Username,Email,Password,FirstName,LastName,Address,Role")] User user)
-        {
-            if (ModelState.IsValid)
-            {
-                // Check if the username or email already exists
-                var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username || u.Email == user.Email);
-                if (existingUser != null)
-                {
-                    ModelState.AddModelError(string.Empty, "Username or Email already exists.");
-                    return View(user);
-                }
 
-                // Add the new user to the database
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(user);
-        }
 
 
 
