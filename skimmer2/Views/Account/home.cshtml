@@ -16,8 +16,17 @@
 <!-- Map container -->
 <div id="map"></div>
 
-<!-- Button to add a bookmark -->
-<button onclick="addBookmark()">Add Bookmark</button>
+<!-- Form to add a bookmark by address -->
+<form onsubmit="addBookmarkByAddress(event)">
+    <input type="text" id="bookmarkAddress" placeholder="Enter address to bookmark" required />
+    <button type="submit">Add Bookmark by Address</button>
+</form>
+
+<!-- Button to add a bookmark at map center -->
+<button onclick="addBookmark()">Add Bookmark at Map Center</button>
+
+<!-- List to display bookmarks with remove option -->
+<ul id="bookmarkList"></ul>
 
 <!-- Include Leaflet CSS -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
@@ -28,10 +37,24 @@
         height: 400px; /* The height is 400 pixels */
         width: 100%; /* The width is the width of the container */
     }
+
+    #bookmarkList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        #bookmarkList li {
+            margin: 5px 0;
+        }
+
+        #bookmarkList button {
+            margin-left: 10px;
+        }
 </style>
 
-<!-- Include Leaflet JavaScript -->
+<!-- Include Leaflet JavaScript and Nominatim for geocoding -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@turf/turf@6/turf.min.js"></script>
 
 <!-- Initialize the map and manage bookmarks -->
 <script>
@@ -45,17 +68,47 @@
     // Array to store bookmarks
     var bookmarks = [];
 
-    // Function to add a bookmark
+    // Function to add a bookmark at the map center
     function addBookmark() {
         var center = map.getCenter();
-        var bookmark = {
-            lat: center.lat,
-            lng: center.lng,
-            title: prompt('Enter a title for this bookmark:')
-        };
-        if (bookmark.title) {
+        var title = prompt('Enter a title for this bookmark:');
+        if (title) {
+            var bookmark = {
+                lat: center.lat,
+                lng: center.lng,
+                title: title
+            };
             bookmarks.push(bookmark);
             displayBookmarks();
+        }
+    }
+
+    // Function to add a bookmark by address
+    function addBookmarkByAddress(event) {
+        event.preventDefault();
+        var address = document.getElementById('bookmarkAddress').value;
+        if (address) {
+            fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        var location = data[0];
+                        var bookmark = {
+                            lat: parseFloat(location.lat),
+                            lng: parseFloat(location.lon),
+                            title: address
+                        };
+                        bookmarks.push(bookmark);
+                        displayBookmarks();
+                        document.getElementById('bookmarkAddress').value = ''; // Clear the input
+                    } else {
+                        alert('Address not found. Please try a different address.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while geocoding the address.');
+                });
         }
     }
 
@@ -68,12 +121,30 @@
             }
         });
 
-        // Add new markers for each bookmark
-        bookmarks.forEach(function(bookmark) {
-            L.marker([bookmark.lat, bookmark.lng])
+        // Clear existing list items
+        var list = document.getElementById('bookmarkList');
+        list.innerHTML = '';
+
+        // Add new markers for each bookmark and list items
+        bookmarks.forEach(function(bookmark, index) {
+            // Add marker to map
+            var marker = L.marker([bookmark.lat, bookmark.lng])
                 .addTo(map)
                 .bindPopup(`<b>${bookmark.title}</b><br>Lat: ${bookmark.lat.toFixed(4)}, Lng: ${bookmark.lng.toFixed(4)}`);
+
+            // Add list item with remove button
+            var li = document.createElement('li');
+            li.innerHTML = `${bookmark.title} <button onclick="removeBookmark(${index})">Remove</button>`;
+            list.appendChild(li);
         });
+    }
+
+    // Function to remove a bookmark
+    function removeBookmark(index) {
+        if (confirm('Are you sure you want to remove this bookmark?')) {
+            bookmarks.splice(index, 1);
+            displayBookmarks();
+        }
     }
 
     // Initial display of bookmarks if any
