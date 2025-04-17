@@ -10,25 +10,15 @@ namespace skimmer2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly CETSNContext _context;
+        private readonly AccountContext _accountContext;
 
-        public HomeController(ILogger<HomeController> logger, CETSNContext context)
+
+        public HomeController(ILogger<HomeController> logger, CETSNContext context, AccountContext accountContext)
         {
             _logger = logger;
             _context = context;
-        }
-
-
-        private readonly AccountContext _accountContext;
-
-        public HomeController(ILogger<HomeController> logger, AccountContext accountContext)
-        {
-            _logger = logger;
             _accountContext = accountContext;
         }
-
-
-
-
 
 
 
