@@ -49,40 +49,26 @@ namespace skimmer2.Controllers
 
 
 
-        [HttpPost]
-        
-        public ActionResult CreateAcc(CETSNContext context_)
-        {
-            if(_context.CETSNContext.Any(x=>x.username == CETSNContext.context_)){
-                ViewBag.Notification = "This username is taken.";
-                return View();
-            }
-            else{
-                _context.CETSNContext.Add(context_);
-                _context.SaveChanges();
-
-                Session["username"] = context_.username.ToString();
-            }
-        }
 
 
-       /* public IActionResult CreateAcc([Bind("username,email,password,first_name,last_name,address,Role")] account model)
-{
-    if (ModelState.IsValid)
+
+    [HttpGet]
+    public IActionResult CreateAcc()
     {
-        // Hash the password before saving
-        model.password = BCrypt.Net.BCrypt.HashPassword(model.password);
-        _context.Add(model);
-        _context.SaveChanges();
-        return RedirectToAction(nameof(Success)); // You need to create this action or redirect to another page
+        return View();
     }
-    return View(model);
-}
 
-public IActionResult Success()
-{
-    return View(); // Create a Success view or redirect to another appropriate page
-}*/
+    [HttpPost]
+    public async Task<IActionResult> CreateAcc(Account account)
+    {
+        if (ModelState.IsValid)
+        {
+            _context.Accounts.Add(account);
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
+        }
+        return View(account);
+    }
 
 
     }
