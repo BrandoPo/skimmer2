@@ -1,7 +1,8 @@
 @model skimmer2.Models.account
 
 @{
-    ViewData["Title"] = "Account Details";
+    ViewData["Title"] = "Account Home";
+    Layout = "_Layout"; // Assuming you have a layout file
 }
 
 <h2>Welcome, @Model.username</h2>
@@ -11,5 +12,72 @@
 <p>Last Name: @Model.last_name</p>
 <p>Address: @Model.address</p>
 <p>Role: @Model.Role</p>
+
+<!-- Map container -->
+<div id="map"></div>
+
+<!-- Button to add a bookmark -->
+<button onclick="addBookmark()">Add Bookmark</button>
+
+<!-- Include Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+<!-- Add some basic styling for the map -->
+<style>
+    #map {
+        height: 400px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the container */
+    }
+</style>
+
+<!-- Include Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<!-- Initialize the map and manage bookmarks -->
+<script>
+    // Initialize the map
+    var map = L.map('map').setView([51.505, -0.09], 13); // Default to London, adjust as needed
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+        subdomains: ['a', 'b', 'c']
+    }).addTo(map);
+
+    // Array to store bookmarks
+    var bookmarks = [];
+
+    // Function to add a bookmark
+    function addBookmark() {
+        var center = map.getCenter();
+        var bookmark = {
+            lat: center.lat,
+            lng: center.lng,
+            title: prompt('Enter a title for this bookmark:')
+        };
+        if (bookmark.title) {
+            bookmarks.push(bookmark);
+            displayBookmarks();
+        }
+    }
+
+    // Function to display bookmarks
+    function displayBookmarks() {
+        // Clear existing markers
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Add new markers for each bookmark
+        bookmarks.forEach(function(bookmark) {
+            L.marker([bookmark.lat, bookmark.lng])
+                .addTo(map)
+                .bindPopup(`<b>${bookmark.title}</b><br>Lat: ${bookmark.lat.toFixed(4)}, Lng: ${bookmark.lng.toFixed(4)}`);
+        });
+    }
+
+    // Initial display of bookmarks if any
+    displayBookmarks();
+</script>
 
 <a asp-action="SignOut">Sign Out</a>
