@@ -52,28 +52,6 @@ namespace skimmer2.Controllers
 
 
 
-[HttpPost]
-public async Task<IActionResult> CreateAcc(Account account)
-{
-    try
-    {
-        if (ModelState.IsValid)
-        {
-            _context.Accounts.Add(account);
-            await _context.SaveChangesAsync();
-            return RedirectToAction("Index");
-        }
-        return View(account);
-    }
-    catch (Exception ex)
-    {
-        // Log the exception (optional)
-        _logger.LogError(ex, "An error occurred while creating an account.");
-
-        // Pass the error message to the error view
-        return View("Error", new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier, ErrorMessage = ex.Message });
-    }
-}
 
 
     }
