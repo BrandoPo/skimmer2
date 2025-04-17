@@ -13,6 +13,17 @@ builder.Services.AddDbContext<skimmer2.Data.CETSNContext>(options =>
         ServerVersion.AutoDetect(builder.Configuration.GetConnectionString("DefaultConnection"))
     ));
 
+
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromHours(1); // Adjust as needed
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

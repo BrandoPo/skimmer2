@@ -1,0 +1,15 @@
+@model skimmer2.Models.account
+
+@{
+    ViewData["Title"] = "Account Details";
+}
+
+<h2>Welcome, @Model.username</h2>
+
+<p>Email: @Model.email</p>
+<p>First Name: @Model.first_name</p>
+<p>Last Name: @Model.last_name</p>
+<p>Address: @Model.address</p>
+<p>Role: @Model.Role</p>
+
+<a asp-action="SignOut">Sign Out</a>
