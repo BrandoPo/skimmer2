@@ -17,6 +17,24 @@ namespace skimmer2.Controllers
             _context = context;
         }
 
+
+        private readonly AccountContext _accountContext;
+
+        public HomeController(ILogger<HomeController> logger, AccountContext accountContext)
+        {
+            _logger = logger;
+            _accountContext = accountContext;
+        }
+
+
+
+
+
+
+
+
+
+
         public IActionResult Index()
         {
             return View(); // Pass the users list to the view
@@ -38,40 +56,40 @@ namespace skimmer2.Controllers
         }
 
         [HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> CreateAcc([Bind("Username,Email,Password,FirstName,LastName,Address,Role")] User user)
-{
-    try
-    {
-        if (ModelState.IsValid)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateAcc([Bind("Username,Email,Password,FirstName,LastName,Address,Role")] account account)
         {
-            // Check if the username or email already exists
-            var existingUser = await _context.Users.FirstOrDefaultAsync(u => u.Username == user.Username || u.Email == user.Email);
-            if (existingUser != null)
+            try
             {
-                ModelState.AddModelError(string.Empty, "Username or Email already exists.");
-                return View(user);
-            }
+                if (ModelState.IsValid)
+                {
+                    // Check if the username or email already exists
+                    var existingAccount = await _accountContext.Accounts.FirstOrDefaultAsync(a => a.username == account.username || a.email == account.email);
+                    if (existingAccount != null)
+                    {
+                        ModelState.AddModelError(string.Empty, "Username or Email already exists.");
+                        return View(account);
+                    }
 
-            // Add the new user to the database
-            _context.Add(user);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+                    // Add the new account to the database
+                    _accountContext.Add(account);
+                    await _accountContext.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                return View(account);
+            }
+            catch (Exception ex)
+            {
+                // Log the error
+                _logger.LogError(ex, "An error occurred while creating a new account.");
+
+                // Add the error to ModelState
+                ModelState.AddModelError(string.Empty, "An error occurred while processing your request. Please try again later.");
+
+                // Return the view with the error message
+                return View(account);
+            }
         }
-        return View(user);
-    }
-    catch (Exception ex)
-    {
-        // Log the error
-        _logger.LogError(ex, "An error occurred while creating a new account.");
-        
-        // Add the error to ModelState
-        ModelState.AddModelError(string.Empty, "An error occurred while processing your request. Please try again later.");
-        
-        // Return the view with the error message
-        return View(user);
-    }
-}
 
 
 
