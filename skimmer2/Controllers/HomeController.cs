@@ -10,20 +10,12 @@ namespace skimmer2.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly CETSNContext _context;
-        private readonly AccountContext _accountContext;
 
-
-        public HomeController(ILogger<HomeController> logger, CETSNContext context, AccountContext accountContext)
+        public HomeController(ILogger<HomeController> logger, CETSNContext context)
         {
             _logger = logger;
             _context = context;
-            _accountContext = accountContext;
         }
-
-
-
-
-
 
         public IActionResult Index()
         {
@@ -54,7 +46,7 @@ namespace skimmer2.Controllers
                 if (ModelState.IsValid)
                 {
                     // Check if the username or email already exists
-                    var existingAccount = await _accountContext.Accounts.FirstOrDefaultAsync(a => a.username == account.username || a.email == account.email);
+                    var existingAccount = await _context.Accounts.FirstOrDefaultAsync(a => a.username == account.username || a.email == account.email);
                     if (existingAccount != null)
                     {
                         ModelState.AddModelError(string.Empty, "Username or Email already exists.");
@@ -62,8 +54,8 @@ namespace skimmer2.Controllers
                     }
 
                     // Add the new account to the database
-                    _accountContext.Add(account);
-                    await _accountContext.SaveChangesAsync();
+                    _context.Add(account);
+                    await _context.SaveChangesAsync();
                     return RedirectToAction(nameof(Index));
                 }
                 return View(account);
