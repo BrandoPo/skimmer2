@@ -62,6 +62,16 @@
         }
     </style>
 </head>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+            window.onload = function() {
+                alert('@TempData["ErrorMessage"]');
+            };
+        </script>
+    }
+
 <body>
     <form method="post">
          @Html.AntiForgeryToken()
@@ -92,6 +102,22 @@
         <button type="submit">Submit</button>
         <a href="/home/signin" class="link-button">Already have an account? Sign In.</a>
     </form>
+
+ @if (!ViewData.ModelState.IsValid)
+    {
+        @foreach (var modelState in ViewData.ModelState.Values)
+        {
+            @foreach (var error in modelState.Errors)
+            {
+                <script>
+                    window.onload = function() {
+                        alert('@error.ErrorMessage');
+                    };
+                </script>
+            }
+        }
+    }
+
 
 </body>
 </html>

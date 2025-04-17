@@ -39,7 +39,7 @@ namespace skimmer2.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CreateAcc([Bind("Username,Email,Password,FirstName,LastName,Address,Role")] account account)
+        public async Task<IActionResult> CreateAcc([Bind("username,email,password,first_name,last_name,address,role")] account account)
         {
             try
             {
@@ -49,7 +49,8 @@ namespace skimmer2.Controllers
                     var existingAccount = await _context.Accounts.FirstOrDefaultAsync(a => a.username == account.username || a.email == account.email);
                     if (existingAccount != null)
                     {
-                        ModelState.AddModelError(string.Empty, "Username or Email already exists.");
+                        // Set a TempData message for the popup
+                        TempData["ErrorMessage"] = "Username or Email already exists.";
                         return View(account);
                     }
 
