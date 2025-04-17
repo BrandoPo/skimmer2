@@ -47,6 +47,25 @@ namespace skimmer2.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
+
+
+        [HttpPost]
+        
+        public ActionResult CreateAcc(CETSNContext context_)
+        {
+            if(_context.CETSNContext.Any(x=>x.username == CETSNContext.context_)){
+                ViewBag.Notification = "This username is taken.";
+                return View();
+            }
+            else{
+                _context.CETSNContext.Add(context_);
+                _context.SaveChanges();
+
+                Session["username"] = context_.username.ToString();
+            }
+        }
+
+
        /* public IActionResult CreateAcc([Bind("username,email,password,first_name,last_name,address,Role")] account model)
 {
     if (ModelState.IsValid)
