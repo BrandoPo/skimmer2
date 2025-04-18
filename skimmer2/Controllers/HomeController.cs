@@ -22,7 +22,7 @@ namespace skimmer2.Controllers
             return View(); // Pass the users list to the view
         }
         //delete below
-        public IActionResult testIndux()
+        public IActionResult induxTest1()
         {
             return View();
         }
