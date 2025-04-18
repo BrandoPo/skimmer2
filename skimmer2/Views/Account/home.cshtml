@@ -1,0 +1,153 @@
+@model skimmer2.Models.account
+
+@{
+    ViewData["Title"] = "Account Home";
+    Layout = "_Layout"; // Assuming you have a layout file
+}
+
+<h2>Welcome, @Model.username</h2>
+
+<p>Email: @Model.email</p>
+<p>First Name: @Model.first_name</p>
+<p>Last Name: @Model.last_name</p>
+<p>Address: @Model.address</p>
+<p>Role: @Model.Role</p>
+
+<!-- Map container -->
+<div id="map"></div>
+
+<!-- Form to add a bookmark by address -->
+<form onsubmit="addBookmarkByAddress(event)">
+    <input type="text" id="bookmarkAddress" placeholder="Enter address to bookmark" required />
+    <button type="submit">Add Bookmark by Address</button>
+</form>
+
+<!-- Button to add a bookmark at map center -->
+<button onclick="addBookmark()">Add Bookmark at Map Center</button>
+
+<!-- List to display bookmarks with remove option -->
+<ul id="bookmarkList"></ul>
+
+<!-- Include Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+<!-- Add some basic styling for the map -->
+<style>
+    #map {
+        height: 400px; /* The height is 400 pixels */
+        width: 100%; /* The width is the width of the container */
+    }
+
+    #bookmarkList {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        #bookmarkList li {
+            margin: 5px 0;
+        }
+
+        #bookmarkList button {
+            margin-left: 10px;
+        }
+</style>
+
+<!-- Include Leaflet JavaScript -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+<!-- Initialize the map and manage bookmarks -->
+<script>
+    // Initialize the map
+    var map = L.map('map').setView([51.505, -0.09], 13); // Default to London, adjust as needed
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>',
+        subdomains: ['a', 'b', 'c']
+    }).addTo(map);
+
+    // Array to store bookmarks
+    var bookmarks = [];
+
+    // Function to add a bookmark at the map center
+    function addBookmark() {
+        var center = map.getCenter();
+        var title = prompt('Enter a title for this bookmark:');
+        if (title) {
+            var bookmark = {
+                lat: center.lat,
+                lng: center.lng,
+                title: title
+            };
+            bookmarks.push(bookmark);
+            displayBookmarks();
+        }
+    }
+
+    // Function to add a bookmark by address
+    function addBookmarkByAddress(event) {
+        event.preventDefault();
+        var address = document.getElementById('bookmarkAddress').value;
+        if (address) {
+            fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(address)}&format=json&limit=1`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.length > 0) {
+                        var location = data[0];
+                        var bookmark = {
+                            lat: parseFloat(location.lat),
+                            lng: parseFloat(location.lon),
+                            title: address
+                        };
+                        bookmarks.push(bookmark);
+                        displayBookmarks();
+                        document.getElementById('bookmarkAddress').value = ''; // Clear the input
+                    } else {
+                        alert('Address not found. Please try a different address.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred while geocoding the address.');
+                });
+        }
+    }
+
+    // Function to display bookmarks
+    function displayBookmarks() {
+        // Clear existing markers
+        map.eachLayer(function (layer) {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
+
+        // Clear existing list items
+        var list = document.getElementById('bookmarkList');
+        list.innerHTML = '';
+
+        // Add new markers for each bookmark and list items
+        bookmarks.forEach(function(bookmark, index) {
+            // Add marker to map
+            var marker = L.marker([bookmark.lat, bookmark.lng])
+                .addTo(map)
+                .bindPopup(`<b>${bookmark.title}</b><br>Lat: ${bookmark.lat.toFixed(4)}, Lng: ${bookmark.lng.toFixed(4)}`);
+
+            // Add list item with remove button
+            var li = document.createElement('li');
+            li.innerHTML = `${bookmark.title} <button onclick="removeBookmark(${index})">Remove</button>`;
+            list.appendChild(li);
+        });
+    }
+
+    // Function to remove a bookmark
+    function removeBookmark(index) {
+        if (confirm('Are you sure you want to remove this bookmark?')) {
+            bookmarks.splice(index, 1);
+            displayBookmarks();
+        }
+    }
+
+    // Initial display of bookmarks if any
+    displayBookmarks();
+</script>
+
+<a asp-action="SignOut">Sign Out</a>
