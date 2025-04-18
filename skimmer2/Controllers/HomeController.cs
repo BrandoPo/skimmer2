@@ -21,7 +21,12 @@ namespace skimmer2.Controllers
         {
             return View(); // Pass the users list to the view
         }
-
+        //delete below
+        public IActionResult testIndux()
+        {
+            return View();
+        }
+        // delete above
         public IActionResult Privacy()
         {
             return View();

@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "testIndux";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Header -->
+<header class="site-header">
+    <h1>@ViewData["Title"]</h1>
+</header>
+
+<!-- YouTube Video -->
+<section class="video-section">
+    <iframe width="100%"
+            height="auto"
+            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+    </iframe>
+</section>
+
+<!-- White Background Section -->
+<section class="white-section">
+    <h2>White Section</h2>
+    <p>This is a placeholder for content in the white section.</p>
+</section>
+
+<!-- Black Background Section -->
+<section class="black-section">
+    <h2>Black Section</h2>
+    <p>This is a placeholder for content in the black section.</p>
+</section>
+
+@section Scripts {
+    <script>
+        console.log("Page loaded!");
+    </script>
+}

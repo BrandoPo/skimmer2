@@ -5,12 +5,20 @@
       "PackagePath": "staticwebassets\\skimmer2.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\css\\induxTest.css",
+      "PackagePath": "staticwebassets\\css\\induxTest.css"
+    },
+    {
       "Id": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
       "Id": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\images\\pool.webp",
+      "PackagePath": "staticwebassets\\images\\pool.webp"
     },
     {
       "Id": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\js\\site.js",

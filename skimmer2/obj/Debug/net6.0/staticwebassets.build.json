@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "uiWRoWeZJ17oMiqL0kJk+H8C4UXD6YResXG2HwDVolQ=",
+  "Hash": "eUOrBtR0/aVLLdp7YmFFUaDc1r8IY1oq4dmQ1gY0xi4=",
   "Source": "skimmer2",
   "BasePath": "_content/skimmer2",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\skimmer2.bundle.scp.css"
     },
     {
+      "Identity": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\css\\induxTest.css",
+      "SourceId": "skimmer2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\",
+      "BasePath": "_content/skimmer2",
+      "RelativePath": "css/induxTest.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\induxTest.css"
+    },
+    {
       "Identity": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\css\\site.css",
       "SourceId": "skimmer2",
       "SourceType": "Discovered",
@@ -83,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\images\\pool.webp",
+      "SourceId": "skimmer2",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\",
+      "BasePath": "_content/skimmer2",
+      "RelativePath": "images/pool.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\pool.webp"
     },
     {
       "Identity": "C:\\Users\\Brandon Phoumyyoth\\source\\repos\\skimmer4\\skimmer2\\wwwroot\\js\\site.js",
