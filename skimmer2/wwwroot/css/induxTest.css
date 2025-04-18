@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #000; /* Set body background to black to match header */
+    background-color: #000;
 }
 
 .site-header {
@@ -14,7 +14,7 @@ body {
     left: 0;
     width: 100%;
     z-index: 100;
-    margin-bottom: 0; /* Ensure no margin below header */
+    margin-bottom: 0;
 }
 
     .site-header h1 {
@@ -22,9 +22,8 @@ body {
         font-size: 2rem;
     }
 
-/* Adjust padding to prevent content from being hidden under the fixed header */
 body {
-    padding-top: 60px; /* Reduced to match header height (20px padding + 2rem font-size ? 60px) */
+    padding-top: 60px;
 }
 
 .full-width {
@@ -36,7 +35,7 @@ body {
 .video-section {
     width: 100%;
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 aspect ratio for YouTube videos */
+    padding-bottom: 56.25%;
 }
 
     .video-section iframe {
