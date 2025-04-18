@@ -1,42 +1,41 @@
-﻿@{
-    ViewData["Title"] = "testIndux";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+﻿@model List<skimmer2.Models.User>
+
+@{
+    ViewData["Title"] = "Home Page";
 }
 
-<!-- Link to the new CSS file -->
-<link rel="stylesheet" href="~/css/induxTest.css" asp-append-version="true" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
+    <style>
+       main{
+         padding-top: 50px; /* Add padding to move content down */
+      }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main role="main" class="pb-3">
+            <div class="text-center">
+                <h1 class="display-4">Welcome</h1>
+                <img src="~/images/pool.webp" alt="Pool" style="max-width: 100%; height: auto;">
+                <p>
+                    Learn about 
+                    <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.
+                </p>
+                <a href="/home/createacc" class="btn-custom">Create an Account</a>
+                <a href="/account/signin" class="btn-custom">Already have an account? Sign In.</a>
+                <a href="/home/AccountInformation" class="btn-custom">Account information.</a>
+                <a href="/home/testIndux" class="btn-custom"> testIndux</a>
+            </div>
+        </main>
+    </div>
 
-<!-- Header -->
-<header class="site-header">
-    <h1>@ViewData["Title"]</h1>
-</header>
-
-<!-- YouTube Video -->
-<section class="video-section">
-    <iframe width="100%"
-            height="auto"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-    </iframe>
-</section>
-
-<!-- White Background Section -->
-<section class="white-section">
-    <h2>White Section</h2>
-    <p>This is a placeholder for content in the white section.</p>
-</section>
-
-<!-- Black Background Section -->
-<section class="black-section">
-    <h2>Black Section</h2>
-    <p>This is a placeholder for content in the black section.</p>
-</section>
-
-@section Scripts {
-    <script>
-        console.log("Page loaded!");
-    </script>
-}
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script src="/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/site.js"></script>
+</body>
+</html>
