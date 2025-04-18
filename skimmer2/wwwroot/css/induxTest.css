@@ -7,8 +7,8 @@ body {
 .site-header {
     background-color: #000;
     color: #fff;
-    text-align: center;
-    padding: 20px;
+    text-align: right; /* Align text to the right */
+    padding: 20px 40px; /* Add right padding for spacing from the edge */
     position: fixed;
     top: 0;
     left: 0;
