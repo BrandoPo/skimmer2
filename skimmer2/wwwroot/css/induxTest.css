@@ -8,8 +8,10 @@ body {
     color: #fff;
     text-align: center;
     padding: 20px;
-    position: sticky;
+    position: fixed; /* Fix the header at the top */
     top: 0;
+    left: 0;
+    width: 100%; /* Full width */
     z-index: 100;
 }
 
@@ -17,6 +19,17 @@ body {
         margin: 0;
         font-size: 2rem;
     }
+
+/* Add padding to the body to prevent content from being hidden under the fixed header */
+body {
+    padding-top: 80px; /* Adjust based on header height */
+}
+
+.full-width {
+    width: 100vw; /* Full viewport width */
+    margin-left: calc(-50vw + 50%); /* Center the section by negating container padding */
+    position: relative;
+}
 
 .video-section {
     width: 100%;

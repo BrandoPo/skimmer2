@@ -1,9 +1,9 @@
 ﻿@{
     ViewData["Title"] = "testIndux";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/induxLayout.cshtml";
 }
 
-<!-- Link to the new CSS file -->
+<!-- Link to the CSS file -->
 <link rel="stylesheet" href="~/css/induxTest.css" asp-append-version="true" />
 
 <!-- Header -->
@@ -11,17 +11,19 @@
     <h1>@ViewData["Title"]</h1>
 </header>
 
-<!-- YouTube Video -->
-<section class="video-section">
-    <iframe width="100%"
-            height="auto"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-    </iframe>
-</section>
+<!-- YouTube Video (full width, outside container) -->
+<div class="full-width">
+    <section class="video-section">
+        <iframe width="100%"
+                height="auto"
+                src="https://www.youtube.com/embed/9bZkp7q19f0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </section>
+</div>
 
 <!-- White Background Section -->
 <section class="white-section">
@@ -29,11 +31,13 @@
     <p>This is a placeholder for content in the white section.</p>
 </section>
 
-<!-- Black Background Section -->
-<section class="black-section">
-    <h2>Black Section</h2>
-    <p>This is a placeholder for content in the black section.</p>
-</section>
+<!-- Black Background Section (full width, outside container) -->
+<div class="full-width">
+    <section class="black-section">
+        <h2>Black Section</h2>
+        <p>This is a placeholder for content in the black section.</p>
+    </section>
+</div>
 
 @section Scripts {
     <script>
