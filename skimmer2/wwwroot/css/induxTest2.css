@@ -1,11 +1,11 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #000;
+    background-color: #003366;
 }
 
 .site-header {
-    background-color: #000;
+    background-color: #003366;
     color: #fff;
     text-align: right;
     padding: 20px 40px;
@@ -14,7 +14,6 @@ body {
     left: 0;
     width: 100%;
     z-index: 100;
-    margin-bottom: 0;
 }
 
     .site-header h1 {
@@ -46,44 +45,24 @@ body {
         height: 100%;
     }
 
-.intro-section {
-    background-color: #fff;
+.feature-section {
+    background-color: #336699;
     padding: 50px 0;
-}
-
-.product-showcase {
-    background-color: #000;
     color: #fff;
-    padding: 50px 0;
 }
 
 .testimonials {
     background-color: #fff;
     padding: 50px 0;
+    color: #333;
 }
 
 .cta-section {
-    background-color: #000;
+    background-color: #003366;
     color: #fff;
     padding: 50px 0;
     text-align: center;
 }
-
-.product-item {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-    .product-item img {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        transition: transform 0.3s;
-    }
-
-    .product-item:hover img {
-        transform: scale(1.05);
-    }
 
 .testimonial-item {
     font-style: italic;
@@ -100,4 +79,14 @@ body {
 
     .btn-orange:hover {
         background-color: #e65c00;
+    }
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+    .img-fluid:hover {
+        transform: scale(1.05);
     }
