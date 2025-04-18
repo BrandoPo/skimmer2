@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #000; /* Set body background to black to match header */
 }
 
 .site-header {
@@ -8,11 +9,12 @@ body {
     color: #fff;
     text-align: center;
     padding: 20px;
-    position: fixed; /* Fix the header at the top */
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; /* Full width */
+    width: 100%;
     z-index: 100;
+    margin-bottom: 0; /* Ensure no margin below header */
 }
 
     .site-header h1 {
@@ -20,14 +22,14 @@ body {
         font-size: 2rem;
     }
 
-/* Add padding to the body to prevent content from being hidden under the fixed header */
+/* Adjust padding to prevent content from being hidden under the fixed header */
 body {
-    padding-top: 80px; /* Adjust based on header height */
+    padding-top: 60px; /* Reduced to match header height (20px padding + 2rem font-size ? 60px) */
 }
 
 .full-width {
-    width: 100vw; /* Full viewport width */
-    margin-left: calc(-50vw + 50%); /* Center the section by negating container padding */
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
     position: relative;
 }
 
@@ -47,7 +49,7 @@ body {
 
 .white-section {
     background-color: #fff;
-    height: 75vh; /* 3/4 of viewport height */
+    height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +60,7 @@ body {
 .black-section {
     background-color: #000;
     color: #fff;
-    height: 75vh; /* 3/4 of viewport height */
+    height: 75vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
