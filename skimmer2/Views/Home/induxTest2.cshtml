@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Speakers";
+    Layout = "~/Views/Shared/induxLayout2.cshtml";
+}
+
+<!-- Link to the CSS file -->
+<link rel="stylesheet" href="~/css/induxTest2.css" asp-append-version="true" />
+
+<!-- Header -->
+<header class="site-header">
+    <h1>@ViewData["Title"]</h1>
+</header>
+
+<!-- YouTube Video (full width, outside container) -->
+<div class="full-width">
+    <section class="video-section">
+        <iframe width="100%"
+                height="auto"
+                src="https://www.youtube.com/embed/9bZkp7q19f0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </section>
+</div>
+
+<!-- Introduction Section -->
+<section class="intro-section">
+    <div class="container">
+        <h2>Elevate Your Audio Experience</h2>
+        <p>Discover our range of premium speakers designed for audiophiles and casual listeners alike. Experience superior sound quality and sleek design.</p>
+    </div>
+</section>
+
+<!-- Product Showcase Section -->
+<section class="product-showcase">
+    <div class="container">
+        <h2>Our Speakers</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="product-item">
+                    <img src="https://placehold.co/300x300?text=Speaker+1" alt="Speaker Model 1">
+                    <h3>Speaker Model 1</h3>
+                    <p>High-fidelity sound with deep bass.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-item">
+                    <img src="https://placehold.co/300x300?text=Speaker+2" alt="Speaker Model 2">
+                    <h3>Speaker Model 2</h3>
+                    <p>Compact design with powerful output.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="product-item">
+                    <img src="https://placehold.co/300x300?text=Speaker+3" alt="Speaker Model 3">
+                    <h3>Speaker Model 3</h3>
+                    <p>Wireless connectivity for seamless streaming.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonials">
+    <div class="container">
+        <h2>What Our Customers Say</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="testimonial-item">
+                    <p>"These speakers transformed my listening experience!" - John D.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial-item">
+                    <p>"Amazing sound quality and sleek design." - Sarah K.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call-to-Action Section -->
+<section class="cta-section">
+    <div class="container">
+        <h2>Ready to Upgrade Your Sound?</h2>
+        <a href="#" class="btn btn-orange">Shop Now</a>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        console.log("Page loaded!");
+    </script>
+}
