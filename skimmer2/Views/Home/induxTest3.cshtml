@@ -38,14 +38,14 @@
 <section class="product-showcase">
     <div class="container">
         <h2>Gallery</h2>
-        <div class="slideshow">
+        <div class="slideshow" data-slideshow-id="gallery">
             <div class="slideshow-images">
                 <img src="https://placehold.co/600x400?text=Speaker+Image+1" alt="Speaker Image 1" class="slideshow-img active">
                 <img src="https://placehold.co/600x400?text=Speaker+Image+2" alt="Speaker Image 2" class="slideshow-img">
                 <img src="https://placehold.co/600x400?text=Speaker+Image+3" alt="Speaker Image 3" class="slideshow-img">
             </div>
-            <button class="slideshow-arrow left-arrow" onclick="changeSlide('gallery', -1)">❮</button>
-            <button class="slideshow-arrow right-arrow" onclick="changeSlide('gallery', 1)">❯</button>
+            <button class="slideshow-arrow left-arrow">❮</button>
+            <button class="slideshow-arrow right-arrow">❯</button>
         </div>
     </div>
 </section>
@@ -68,14 +68,14 @@
 <section class="product-showcase">
     <div class="container">
         <h2>Product Comparisons</h2>
-        <div class="slideshow">
+        <div class="slideshow" data-slideshow-id="comparisons">
             <div class="slideshow-images">
                 <img src="https://placehold.co/600x400?text=Comparison+1" alt="Comparison 1" class="slideshow-img active">
                 <img src="https://placehold.co/600x400?text=Comparison+2" alt="Comparison 2" class="slideshow-img">
                 <img src="https://placehold.co/600x400?text=Comparison+3" alt="Comparison 3" class="slideshow-img">
             </div>
-            <button class="slideshow-arrow left-arrow" onclick="changeSlide('comparisons', -1)">❮</button>
-            <button class="slideshow-arrow right-arrow" onclick="changeSlide('comparisons', 1)">❯</button>
+            <button class="slideshow-arrow left-arrow">❮</button>
+            <button class="slideshow-arrow right-arrow">❯</button>
         </div>
     </div>
 </section>
@@ -153,8 +153,8 @@
 
         // Slideshow functionality
         const slideshows = {
-            'gallery': { currentIndex: 0, images: document.querySelectorAll('.product-showcase:nth-of-type(1) .slideshow-img') },
-            'comparisons': { currentIndex: 0, images: document.querySelectorAll('.product-showcase:nth-of-type(2) .slideshow-img') }
+            'gallery': { currentIndex: 0, images: document.querySelectorAll('.slideshow[data-slideshow-id="gallery"] .slideshow-img') },
+            'comparisons': { currentIndex: 0, images: document.querySelectorAll('.slideshow[data-slideshow-id="comparisons"] .slideshow-img') }
         };
 
         function changeSlide(slideshowId, direction) {
@@ -165,28 +165,34 @@
             });
         }
 
+        // Add event listeners to slideshow arrows
+        document.querySelectorAll('.slideshow').forEach(slideshow => {
+            const slideshowId = slideshow.getAttribute('data-slideshow-id');
+            const leftArrow = slideshow.querySelector('.left-arrow');
+            const rightArrow = slideshow.querySelector('.right-arrow');
+
+            leftArrow.addEventListener('click', () => changeSlide(slideshowId, -1));
+            rightArrow.addEventListener('click', () => changeSlide(slideshowId, 1));
+        });
+
         // Sticky pre-order section visibility
         const stickySection = document.querySelector('.sticky-pre-order');
         const preOrderSection = document.querySelector('.intro-section');
+        let isPopupClosed = false; // Track popup state within the page load
 
-        // Check if the popup has been closed in this session
-        if (!sessionStorage.getItem('preOrderPopupClosed')) {
-            window.addEventListener('scroll', () => {
-                const sectionBottom = preOrderSection.getBoundingClientRect().bottom;
-                if (sectionBottom < window.innerHeight && stickySection.style.display !== 'none') {
-                    stickySection.style.display = 'block';
-                } else {
-                    stickySection.style.display = 'none';
-                }
-            });
-        } else {
-            stickySection.style.display = 'none';
-        }
+        window.addEventListener('scroll', () => {
+            const sectionBottom = preOrderSection.getBoundingClientRect().bottom;
+            if (sectionBottom < window.innerHeight && !isPopupClosed) {
+                stickySection.style.display = 'block';
+            } else {
+                stickySection.style.display = 'none';
+            }
+        });
 
-        // Close sticky pre-order section and store the state
+        // Close sticky pre-order section
         function closeStickyPreOrder() {
             stickySection.style.display = 'none';
-            sessionStorage.setItem('preOrderPopupClosed', 'true');
+            isPopupClosed = true; // Set flag to prevent reappearance during this page load
         }
     </script>
 }
