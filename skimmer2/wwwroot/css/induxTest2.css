@@ -49,46 +49,36 @@ body {
 .intro-section {
     background-color: #fff;
     padding: 50px 0;
+    color: #000; /* Ensure text is readable on white background */
 }
 
 .product-showcase {
     background-color: #000;
-    color: #fff;
     padding: 50px 0;
+    color: #fff; /* Ensure all text is white */
 }
+
+    .product-showcase h2,
+    .product-showcase p {
+        color: #fff; /* Explicitly set for h2 and p */
+    }
 
 .testimonials {
     background-color: #fff;
     padding: 50px 0;
+    color: #000; /* Ensure text is readable on white background */
 }
 
 .cta-section {
     background-color: #000;
-    color: #fff;
     padding: 50px 0;
     text-align: center;
+    color: #fff; /* Ensure all text is white */
 }
 
-.product-item {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-    .product-item img {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        transition: transform 0.3s;
+    .cta-section h2 {
+        color: #fff; /* Explicitly set for h2 */
     }
-
-    .product-item:hover img {
-        transform: scale(1.05);
-    }
-
-.testimonial-item {
-    font-style: italic;
-    margin-bottom: 20px;
-}
 
 .btn-orange {
     background-color: #ff6600;
@@ -100,4 +90,14 @@ body {
 
     .btn-orange:hover {
         background-color: #e65c00;
+    }
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s;
+}
+
+    .img-fluid:hover {
+        transform: scale(1.05);
     }
