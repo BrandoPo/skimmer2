@@ -44,8 +44,8 @@
                 <img src="https://placehold.co/600x400?text=Speaker+Image+2" alt="Speaker Image 2" class="slideshow-img">
                 <img src="https://placehold.co/600x400?text=Speaker+Image+3" alt="Speaker Image 3" class="slideshow-img">
             </div>
-            <button class="slideshow-arrow left-arrow" onclick="changeSlide('gallery', -1)">&#10094;</button>
-            <button class="slideshow-arrow right-arrow" onclick="changeSlide('gallery', 1)">&#10095;</button>
+            <button class="slideshow-arrow left-arrow" onclick="changeSlide('gallery', -1)">❮</button>
+            <button class="slideshow-arrow right-arrow" onclick="changeSlide('gallery', 1)">❯</button>
         </div>
     </div>
 </section>
@@ -74,8 +74,8 @@
                 <img src="https://placehold.co/600x400?text=Comparison+2" alt="Comparison 2" class="slideshow-img">
                 <img src="https://placehold.co/600x400?text=Comparison+3" alt="Comparison 3" class="slideshow-img">
             </div>
-            <button class="slideshow-arrow left-arrow" onclick="changeSlide('comparisons', -1)">&#10094;</button>
-            <button class="slideshow-arrow right-arrow" onclick="changeSlide('comparisons', 1)">&#10095;</button>
+            <button class="slideshow-arrow left-arrow" onclick="changeSlide('comparisons', -1)">❮</button>
+            <button class="slideshow-arrow right-arrow" onclick="changeSlide('comparisons', 1)">❯</button>
         </div>
     </div>
 </section>
@@ -125,9 +125,13 @@
     </div>
 </section>
 
-<!-- Sticky Pre-Order Button -->
+<!-- Sticky Pre-Order Section -->
 <div class="sticky-pre-order">
-    <a href="#" class="btn btn-orange">Pre-Order Now</a>
+    <div class="sticky-pre-order-section">
+        <h3>Pre-Order Now</h3>
+        <p>Don't miss out on exclusive early access!</p>
+        <a href="#" class="btn btn-orange">Pre-Order Now</a>
+    </div>
 </div>
 
 @section Scripts {
@@ -148,16 +152,16 @@
             });
         }
 
-        // Sticky pre-order button visibility
-        const stickyButton = document.querySelector('.sticky-pre-order');
+        // Sticky pre-order section visibility
+        const stickySection = document.querySelector('.sticky-pre-order');
         const preOrderSection = document.querySelector('.intro-section');
 
         window.addEventListener('scroll', () => {
             const sectionBottom = preOrderSection.getBoundingClientRect().bottom;
             if (sectionBottom < window.innerHeight) {
-                stickyButton.style.display = 'block';
+                stickySection.style.display = 'block';
             } else {
-                stickyButton.style.display = 'none';
+                stickySection.style.display = 'none';
             }
         });
     </script>

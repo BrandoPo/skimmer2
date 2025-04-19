@@ -160,7 +160,7 @@ body {
     right: 10px;
 }
 
-/* Sticky Pre-Order Button */
+/* Sticky Pre-Order Section */
 .sticky-pre-order {
     display: none;
     position: fixed;
@@ -168,4 +168,26 @@ body {
     left: 50%;
     transform: translateX(-50%);
     z-index: 100;
+    width: 100%;
+    max-width: 500px;
 }
+
+.sticky-pre-order-section {
+    background-color: #fff;
+    border: 2px solid #ccc;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+    .sticky-pre-order-section h3 {
+        margin: 0 0 10px;
+        font-size: 1.5rem;
+        color: #000;
+    }
+
+    .sticky-pre-order-section p {
+        margin: 0 0 15px;
+        color: #333;
+    }
