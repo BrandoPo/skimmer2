@@ -30,6 +30,10 @@ namespace skimmer2.Controllers
         {
             return View();
         }
+        public IActionResult induxTest3()
+        {
+            return View();
+        }
         // delete above
         public IActionResult Privacy()
         {

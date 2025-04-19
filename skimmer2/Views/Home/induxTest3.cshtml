@@ -1,0 +1,164 @@
+﻿@{
+    ViewData["Title"] = "induxTest3";
+    Layout = "~/Views/Shared/induxLayout3.cshtml";
+}
+
+<!-- Link to the CSS file -->
+<link rel="stylesheet" href="~/css/induxTest3.css" asp-append-version="true" />
+
+<!-- Header -->
+<header class="site-header">
+    <h1>@ViewData["Title"]</h1>
+</header>
+
+<!-- YouTube Video (full width, outside container) -->
+<div class="full-width">
+    <section class="video-section">
+        <iframe width="100%"
+                height="auto"
+                src="https://www.youtube.com/embed/9bZkp7q19f0"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </section>
+</div>
+
+<!-- White Background Section: Pre-Order -->
+<section class="intro-section">
+    <div class="container">
+        <h2>Pre-Order Now</h2>
+        <p>Be the first to experience our latest speakers! Pre-order today and get exclusive early access.</p>
+        <a href="#" class="btn btn-orange pre-order-btn">Pre-Order Now</a>
+    </div>
+</section>
+
+<!-- Black Background Section: Picture Slideshow -->
+<section class="product-showcase">
+    <div class="container">
+        <h2>Gallery</h2>
+        <div class="slideshow">
+            <div class="slideshow-images">
+                <img src="https://placehold.co/600x400?text=Speaker+Image+1" alt="Speaker Image 1" class="slideshow-img active">
+                <img src="https://placehold.co/600x400?text=Speaker+Image+2" alt="Speaker Image 2" class="slideshow-img">
+                <img src="https://placehold.co/600x400?text=Speaker+Image+3" alt="Speaker Image 3" class="slideshow-img">
+            </div>
+            <button class="slideshow-arrow left-arrow" onclick="changeSlide('gallery', -1)">&#10094;</button>
+            <button class="slideshow-arrow right-arrow" onclick="changeSlide('gallery', 1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+<!-- White Background Section: Features -->
+<section class="testimonials">
+    <div class="container">
+        <h2>Features</h2>
+        <ul>
+            <li>High-fidelity sound with deep bass</li>
+            <li>Compact design for easy portability</li>
+            <li>Wireless connectivity with Bluetooth 5.0</li>
+            <li>Water-resistant build for outdoor use</li>
+            <li>Voice assistant integration</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Black Background Section: Product Comparisons Slideshow -->
+<section class="product-showcase">
+    <div class="container">
+        <h2>Product Comparisons</h2>
+        <div class="slideshow">
+            <div class="slideshow-images">
+                <img src="https://placehold.co/600x400?text=Comparison+1" alt="Comparison 1" class="slideshow-img active">
+                <img src="https://placehold.co/600x400?text=Comparison+2" alt="Comparison 2" class="slideshow-img">
+                <img src="https://placehold.co/600x400?text=Comparison+3" alt="Comparison 3" class="slideshow-img">
+            </div>
+            <button class="slideshow-arrow left-arrow" onclick="changeSlide('comparisons', -1)">&#10094;</button>
+            <button class="slideshow-arrow right-arrow" onclick="changeSlide('comparisons', 1)">&#10095;</button>
+        </div>
+    </div>
+</section>
+
+<!-- White Background Section: Specs -->
+<section class="testimonials">
+    <div class="container">
+        <h2>Specifications</h2>
+        <ul>
+            <li>Frequency Range: 20Hz - 20kHz</li>
+            <li>Battery Life: 69 hours</li>
+            <li>Charging Time: 1 minute 30 seconds</li>
+            <li>Wireless Range: 300 feet</li>
+            <li>Weight: 1.2 lbs</li>
+            <li>Dimensions: 6" x 3" x 3"</li>
+        </ul>
+    </div>
+</section>
+
+<!-- Black Background Section: Reviews -->
+<section class="product-showcase">
+    <div class="container">
+        <h2>Customer Reviews</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <p>"Absolutely incredible sound quality! Worth every penny." - Alex R.</p>
+            </div>
+            <div class="col-md-6">
+                <p>"The battery life is insane, and the design is sleek." - Emily S.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- White Background Section: Q&A -->
+<section class="testimonials">
+    <div class="container">
+        <h2>Questions & Answers</h2>
+        <div>
+            <h4>Q: Is the speaker compatible with all devices?</h4>
+            <p>A: Yes, it supports Bluetooth 5.0 and works with any Bluetooth-enabled device.</p>
+        </div>
+        <div>
+            <h4>Q: Can it be used outdoors?</h4>
+            <p>A: Absolutely! It's water-resistant and built for outdoor use.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Sticky Pre-Order Button -->
+<div class="sticky-pre-order">
+    <a href="#" class="btn btn-orange">Pre-Order Now</a>
+</div>
+
+@section Scripts {
+    <script>
+        console.log("Page loaded!");
+
+        // Slideshow functionality
+        const slideshows = {
+            'gallery': { currentIndex: 0, images: document.querySelectorAll('.product-showcase:nth-of-type(1) .slideshow-img') },
+            'comparisons': { currentIndex: 0, images: document.querySelectorAll('.product-showcase:nth-of-type(2) .slideshow-img') }
+        };
+
+        function changeSlide(slideshowId, direction) {
+            const slideshow = slideshows[slideshowId];
+            slideshow.currentIndex = (slideshow.currentIndex + direction + slideshow.images.length) % slideshow.images.length;
+            slideshow.images.forEach((img, index) => {
+                img.classList.toggle('active', index === slideshow.currentIndex);
+            });
+        }
+
+        // Sticky pre-order button visibility
+        const stickyButton = document.querySelector('.sticky-pre-order');
+        const preOrderSection = document.querySelector('.intro-section');
+
+        window.addEventListener('scroll', () => {
+            const sectionBottom = preOrderSection.getBoundingClientRect().bottom;
+            if (sectionBottom < window.innerHeight) {
+                stickyButton.style.display = 'block';
+            } else {
+                stickyButton.style.display = 'none';
+            }
+        });
+    </script>
+}
