@@ -127,19 +127,13 @@
 
 <!-- Black Background Section: Footer -->
 <footer class="footer-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Contact Us</h3>
-                <p>Email: support@speakers.com</p>
-                <p>Phone: (123) 456-7890</p>
-            </div>
-            <div class="col-md-6 text-md-end">
-                <h3>Ready to Shop?</h3>
-                <a href="#" class="btn btn-orange">Shop Now</a>
-            </div>
-        </div>
-        <p class="text-center mt-4">&copy; 2025 Speakers Inc. All rights reserved.</p>
+    <div class="container text-center">
+        <h3>Contact Us</h3>
+        <p>Email: support@speakers.com</p>
+        <p>Phone: (123) 456-7890</p>
+        <h3 class="mt-4">Ready to Shop?</h3>
+        <a href="#" class="btn btn-orange">Shop Now</a>
+        <p class="mt-4">© 2025 Speakers Inc. All rights reserved.</p>
     </div>
 </footer>
 
@@ -175,18 +169,24 @@
         const stickySection = document.querySelector('.sticky-pre-order');
         const preOrderSection = document.querySelector('.intro-section');
 
-        window.addEventListener('scroll', () => {
-            const sectionBottom = preOrderSection.getBoundingClientRect().bottom;
-            if (sectionBottom < window.innerHeight) {
-                stickySection.style.display = 'block';
-            } else {
-                stickySection.style.display = 'none';
-            }
-        });
+        // Check if the popup has been closed in this session
+        if (!sessionStorage.getItem('preOrderPopupClosed')) {
+            window.addEventListener('scroll', () => {
+                const sectionBottom = preOrderSection.getBoundingClientRect().bottom;
+                if (sectionBottom < window.innerHeight && stickySection.style.display !== 'none') {
+                    stickySection.style.display = 'block';
+                } else {
+                    stickySection.style.display = 'none';
+                }
+            });
+        } else {
+            stickySection.style.display = 'none';
+        }
 
-        // Close sticky pre-order section
+        // Close sticky pre-order section and store the state
         function closeStickyPreOrder() {
             stickySection.style.display = 'none';
+            sessionStorage.setItem('preOrderPopupClosed', 'true');
         }
     </script>
 }
