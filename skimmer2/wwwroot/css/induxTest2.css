@@ -101,3 +101,28 @@ body {
     .btn-orange:hover {
         background-color: #e65c00;
     }
+
+.white-section {
+    background-color: #fff;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000;
+}
+
+.wave-section {
+    background-color: #fff; /* White base for transparent parts */
+    background-image: url('~/images/wave.png'); /* Adjust path to your image */
+    background-size: cover;
+    background-position: center;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000; /* Adjust if text readability needs improvement */
+}
