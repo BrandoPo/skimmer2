@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Helvetica, Arial, sans-serif; /* Changed to Helvetica */
+    font-family: Helvetica, Arial, sans-serif;
     background-color: #000;
 }
 
@@ -170,7 +170,7 @@ body {
     display: none;
     position: fixed;
     bottom: 20px;
-    right: 20px;
+    left: 20px; /* Changed from right to left */
     z-index: 100;
     width: 100%;
     max-width: 350px;
