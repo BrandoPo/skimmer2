@@ -221,9 +221,9 @@
         let isPopupClosed = false; // Track popup state within the page load
 
         window.addEventListener('scroll', () => {
-            const sectionTop = preOrderSection.getBoundingClientRect().top;
-            // Show the popup when the top of the pre-order section is about to leave the viewport
-            if (sectionTop < 50 && !isPopupClosed) { // 50px buffer for "about to leave"
+            const sectionBottom = preOrderSection.getBoundingClientRect().bottom;
+            // Show the popup when the bottom of the pre-order section has left the viewport
+            if (sectionBottom < 0 && !isPopupClosed) {
                 stickySection.style.display = 'block';
             } else {
                 stickySection.style.display = 'none';
