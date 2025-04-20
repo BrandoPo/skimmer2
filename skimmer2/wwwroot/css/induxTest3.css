@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Helvetica, Arial, sans-serif; /* Changed to Helvetica */
     background-color: #000;
 }
 
@@ -111,6 +111,11 @@ body {
     .img-fluid:hover {
         transform: scale(1.05);
     }
+
+/* Ensure images in sections have proper spacing */
+.section-image {
+    margin-bottom: 20px;
+}
 
 /* Slideshow Styles */
 .slideshow {
