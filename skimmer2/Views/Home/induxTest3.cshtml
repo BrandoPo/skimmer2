@@ -48,13 +48,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="slideshow" data-slideshow-id="gallery">
-                    <div class="slideshow-images">
-                        <img src="https://placehold.co/600x400?text=Speaker+Image+1" alt="Speaker Image 1" class="slideshow-img active">
-                        <img src="https://placehold.co/600x400?text=Speaker+Image+2" alt="Speaker Image 2" class="slideshow-img">
-                        <img src="https://placehold.co/600x400?text=Speaker+Image+3" alt="Speaker Image 3" class="slideshow-img">
+                    <div class="slideshow-container">
+                        <div class="preview preview-left">
+                            <button class="slideshow-arrow left-arrow">❮</button>
+                            <img src="https://placehold.co/600x400?text=Speaker+Image+3" alt="Previous Preview" class="preview-img">
+                        </div>
+                        <div class="slideshow-images">
+                            <img src="https://placehold.co/600x400?text=Speaker+Image+1" alt="Speaker Image 1" class="slideshow-img active">
+                            <img src="https://placehold.co/600x400?text=Speaker+Image+2" alt="Speaker Image 2" class="slideshow-img">
+                            <img src="https://placehold.co/600x400?text=Speaker+Image+3" alt="Speaker Image 3" class="slideshow-img">
+                        </div>
+                        <div class="preview preview-right">
+                            <button class="slideshow-arrow right-arrow">❯</button>
+                            <img src="https://placehold.co/600x400?text=Speaker+Image+2" alt="Next Preview" class="preview-img">
+                        </div>
                     </div>
-                    <button class="slideshow-arrow left-arrow">❮</button>
-                    <button class="slideshow-arrow right-arrow">❯</button>
                 </div>
             </div>
         </div>
@@ -88,13 +96,21 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="slideshow" data-slideshow-id="comparisons">
-                    <div class="slideshow-images">
-                        <img src="https://placehold.co/600x400?text=Comparison+1" alt="Comparison 1" class="slideshow-img active">
-                        <img src="https://placehold.co/600x400?text=Comparison+2" alt="Comparison 2" class="slideshow-img">
-                        <img src="https://placehold.co/600x400?text=Comparison+3" alt="Comparison 3" class="slideshow-img">
+                    <div class="slideshow-container">
+                        <div class="preview preview-left">
+                            <button class="slideshow-arrow left-arrow">❮</button>
+                            <img src="https://placehold.co/600x400?text=Comparison+3" alt="Previous Preview" class="preview-img">
+                        </div>
+                        <div class="slideshow-images">
+                            <img src="https://placehold.co/600x400?text=Comparison+1" alt="Comparison 1" class="slideshow-img active">
+                            <img src="https://placehold.co/600x400?text=Comparison+2" alt="Comparison 2" class="slideshow-img">
+                            <img src="https://placehold.co/600x400?text=Comparison+3" alt="Comparison 3" class="slideshow-img">
+                        </div>
+                        <div class="preview preview-right">
+                            <button class="slideshow-arrow right-arrow">❯</button>
+                            <img src="https://placehold.co/600x400?text=Comparison+2" alt="Next Preview" class="preview-img">
+                        </div>
                     </div>
-                    <button class="slideshow-arrow left-arrow">❮</button>
-                    <button class="slideshow-arrow right-arrow">❯</button>
                 </div>
             </div>
         </div>
@@ -193,16 +209,45 @@
 
         // Slideshow functionality
         const slideshows = {
-            'gallery': { currentIndex: 0, images: document.querySelectorAll('.slideshow[data-slideshow-id="gallery"] .slideshow-img') },
-            'comparisons': { currentIndex: 0, images: document.querySelectorAll('.slideshow[data-slideshow-id="comparisons"] .slideshow-img') }
+            'gallery': {
+                currentIndex: 0,
+                images: document.querySelectorAll('.slideshow[data-slideshow-id="gallery"] .slideshow-img'),
+                prevPreview: document.querySelector('.slideshow[data-slideshow-id="gallery"] .preview-left .preview-img'),
+                nextPreview: document.querySelector('.slideshow[data-slideshow-id="gallery"] .preview-right .preview-img')
+            },
+            'comparisons': {
+                currentIndex: 0,
+                images: document.querySelectorAll('.slideshow[data-slideshow-id="comparisons"] .slideshow-img'),
+                prevPreview: document.querySelector('.slideshow[data-slideshow-id="comparisons"] .preview-left .preview-img'),
+                nextPreview: document.querySelector('.slideshow[data-slideshow-id="comparisons"] .preview-right .preview-img')
+            }
         };
+
+        function updateSlideshow(slideshowId) {
+            const slideshow = slideshows[slideshowId];
+            const totalImages = slideshow.images.length;
+            const currentIndex = slideshow.currentIndex;
+
+            // Update the main active image
+            slideshow.images.forEach((img, index) => {
+                img.classList.toggle('active', index === currentIndex);
+            });
+
+            // Update the previous preview (image before the current one)
+            const prevIndex = (currentIndex - 1 + totalImages) % totalImages;
+            slideshow.prevPreview.src = slideshow.images[prevIndex].src;
+            slideshow.prevPreview.alt = slideshow.images[prevIndex].alt;
+
+            // Update the next preview (image after the current one)
+            const nextIndex = (currentIndex + 1) % totalImages;
+            slideshow.nextPreview.src = slideshow.images[nextIndex].src;
+            slideshow.nextPreview.alt = slideshow.images[nextIndex].alt;
+        }
 
         function changeSlide(slideshowId, direction) {
             const slideshow = slideshows[slideshowId];
             slideshow.currentIndex = (slideshow.currentIndex + direction + slideshow.images.length) % slideshow.images.length;
-            slideshow.images.forEach((img, index) => {
-                img.classList.toggle('active', index === slideshow.currentIndex);
-            });
+            updateSlideshow(slideshowId);
         }
 
         // Add event listeners to slideshow arrows
@@ -213,6 +258,9 @@
 
             leftArrow.addEventListener('click', () => changeSlide(slideshowId, -1));
             rightArrow.addEventListener('click', () => changeSlide(slideshowId, 1));
+
+            // Initialize the slideshow with previews
+            updateSlideshow(slideshowId);
         });
 
         // Sticky pre-order section visibility
